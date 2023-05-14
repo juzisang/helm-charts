@@ -3,6 +3,16 @@ entries:
   halo:
   - apiVersion: v2
     appVersion: 2.5.2
+    created: "2023-05-14T17:21:24.674209733Z"
+    description: A Helm chart for halo
+    digest: e6ccdea7831c03af62cc42e1f2a1a3d9a92c8b16437297b38703f3ae586ecc38
+    name: halo
+    type: application
+    urls:
+    - https://juzisang.github.io/helm-charts/halo-0.1.7.tgz
+    version: 0.1.7
+  - apiVersion: v2
+    appVersion: 2.5.2
     created: "2023-05-14T17:20:41.416475154Z"
     description: A Helm chart for halo
     digest: 95dea958bd67df641cda7173cc395bb6a53532dfb952ac9a5f1f1298a6bf7180
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://juzisang.github.io/helm-charts/halo-0.1.6.tgz
     version: 0.1.6
-generated: "2023-05-14T17:20:41.415623249Z"
+generated: "2023-05-14T17:21:24.673011684Z"
