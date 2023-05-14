@@ -38,7 +38,7 @@ spec:
               protocol: TCP
           volumeMounts:
             - name: halo-storage
-              mountPath: /var/lib/mysql
+              mountPath: /root/.halo2
           livenessProbe:
             httpGet:
               path: /
