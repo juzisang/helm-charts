@@ -1,0 +1,8 @@
+{
+  "yaml.schemas": {
+    "https://json.schemastore.org/chart.json": "file:///Users/juzisang/Workspace/helm-charts/charts/halo/templates/halo-ingress.yaml"
+  },
+  "[helm]": {
+    "editor.formatOnSave": false
+  }
+}

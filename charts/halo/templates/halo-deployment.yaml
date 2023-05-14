@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "halo.fullname" . }}-halo
+  labels:
+    {{- include "halo.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "halo.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "halo.selectorLabels" . | nindent 8 }}
+    spec:
+      volumes:
+        - name: halo-storage
+          hostPath:
+            path: {{ .Values.halo.volume.path }}
+            type: DirectoryOrCreate
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.halo.image.repository }}:{{ .Values.halo.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.halo.image.pullPolicy }}
+          args:
+            - |-
+              --spring.r2dbc.url=r2dbc:pool:mysql://{{ include "halo.fullname" . }}-mysql:3306/halo
+              --spring.r2dbc.username=root
+              --spring.r2dbc.password={{ .Values.mysql.config.rootPassword }}
+              --spring.sql.init.platform=mysql
+              --halo.external-url={{ .Values.halo.config.externalUrl }}
+              --halo.security.initializer.superadminusername={{ .Values.halo.config.adminUsername }}
+              --halo.security.initializer.superadminpassword={{ .Values.halo.config.adminPassword }}
+          ports:
+            - name: http
+              containerPort: 8090
+              protocol: TCP
+          volumeMounts:
+            - name: halo-storage
+              mountPath: /var/lib/mysql
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            {{- toYaml .Values.halo.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.halo.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.halo.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "halo.fullname" . }}-halo
+  labels:
+    {{- include "halo.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8090
+      targetPort: 8090
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "halo.selectorLabels" . | nindent 4 }}
