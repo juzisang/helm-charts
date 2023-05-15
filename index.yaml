@@ -3,9 +3,9 @@ entries:
   halo:
   - apiVersion: v2
     appVersion: 2.5.2
-    created: "2023-05-15T06:52:18.989645511Z"
+    created: "2023-05-15T06:55:38.989462327Z"
     description: A Helm chart for halo
-    digest: 992de82b4675cedb9ef072f3686488c4bc9d680cf76ca843f84cb83008045e6b
+    digest: 6af12e8762dca35f8e3ebfe34a67d26bee6aa38d4dd5f7aa86f5ce17a796bbc2
     name: halo
     type: application
     urls:
@@ -34,6 +34,16 @@ entries:
   memos:
   - apiVersion: v2
     appVersion: 0.12.2
+    created: "2023-05-15T06:55:38.990293002Z"
+    description: A Helm chart for memos
+    digest: 40e6bafa818e8ad31628128f2f543f85952116580ffeb4e63557b6fe445942bc
+    name: memos
+    type: application
+    urls:
+    - https://juzisang.github.io/helm-charts/memos-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 0.12.2
     created: "2023-05-15T06:52:18.990094733Z"
     description: A Helm chart for memos
     digest: b8e8219e9c044e2a037d567e8c4f0971f29dab73c969b2efd6d5a15ff122eb16
@@ -42,4 +52,4 @@ entries:
     urls:
     - https://juzisang.github.io/helm-charts/memos-0.1.0.tgz
     version: 0.1.0
-generated: "2023-05-15T06:52:18.988842974Z"
+generated: "2023-05-15T06:55:38.987418243Z"
