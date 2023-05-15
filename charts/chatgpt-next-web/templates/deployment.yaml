@@ -23,27 +23,11 @@ spec:
               containerPort: {{ .Values.service.port }}
               protocol: TCP
           env:
-            - name: TZ
-              value: Asia/Shanghai
-            {{- with .Values.chatgpt.apiKey }}
-            - name: OPENAI_API_KEY
-              value: {{ .Values.chatgpt.apiKey }}
+            {{- range .Values.env }}
+            {{- with . }}
+            - name: {{ .name }}
+              value: {{ .value | quote }}
             {{- end }}
-            {{- with .Values.chatgpt.password }}
-            - name: CODE
-              value: {{ .Values.chatgpt.password }}
-            {{- end }}
-            {{- with .Values.chatgpt.baseUrl }}
-            - name: BASE_URL
-              value: {{ .Values.chatgpt.baseUrl }}
-            {{- end }}
-            {{- with .Values.chatgpt.hideUserApiKey }}
-            - name: HIDE_USER_API_KEY
-              value: {{ .Values.chatgpt.hideUserApiKey }}
-            {{- end }}
-            {{- with .Values.chatgpt.disableGPT4 }}
-            - name: DISABLE_GPT4
-              value: {{ .Values.chatgpt.disableGPT4 }}
             {{- end }}
           livenessProbe:
             httpGet:
