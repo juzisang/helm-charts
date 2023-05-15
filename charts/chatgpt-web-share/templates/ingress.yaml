@@ -1,0 +1,32 @@
+{{- if .Values.ingress.enabled -}}
+{{- $fullName := include "chatgpt-web-share.fullname" . -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ $fullName }}
+  labels:
+    {{- include "chatgpt-web-share.labels" . | nindent 4 }}
+  {{- with .Values.ingress.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  ingressClassName: {{ .Values.ingress.className }}
+  {{- if .Values.ingress.chatgpt.secret }}
+  tls:
+    - hosts:
+        - {{ .Values.ingress.chatgpt.host | quote }}
+      secretName: {{ .Values.ingress.chatgpt.secret }}
+  {{- end }}
+  rules:
+    - host: {{ .Values.ingress.chatgpt.host | quote }}
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: {{ $fullName }}-chatgpt-share
+                port:
+                  number: 80
+{{- end }}

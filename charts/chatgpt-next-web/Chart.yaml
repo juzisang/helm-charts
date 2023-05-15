@@ -2,5 +2,5 @@ apiVersion: v2
 name: chatgpt-next-web
 description: A Helm chart for Chatgpt-Next-Web
 type: application
-version: 0.1.2
+version: 0.1.3
 appVersion: "v2.4"

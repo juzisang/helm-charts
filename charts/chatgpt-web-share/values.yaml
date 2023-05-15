@@ -1,0 +1,31 @@
+nameOverride: ""
+fullnameOverride: ""
+
+volume:
+  path: /data/chatgpt-web-share
+config:
+  jwt_secret: ""
+  user_secret: ""
+  admin_username: "admin"
+  admin_password: "123456"
+  chatgpt_access_token: "xxx"
+
+ingress:
+  enabled: false
+  className: "nginx"
+  annotations:
+    {}
+    # nginx.ingress.kubernetes.io/ssl-redirect: 'true'
+  chatgpt:
+    host: chart-example.local
+    secret: chart-example-tls
+
+resources: {}
+
+nodeSelector:
+  {}
+  # kubernetes.io/hostname: xxx
+
+tolerations: []
+
+affinity: {}

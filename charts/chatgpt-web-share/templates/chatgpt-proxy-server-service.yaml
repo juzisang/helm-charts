@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "chatgpt-web-share.fullname" . }}-chatgpt-proxy-server
+  labels:
+    {{- include "chatgpt-web-share.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: 9515
+      targetPort: 9515
+      protocol: TCP
+  selector:
+    {{- include "chatgpt-web-share.selectorLabels" . | nindent 4 }}

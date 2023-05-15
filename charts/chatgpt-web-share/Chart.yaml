@@ -1,0 +1,6 @@
+apiVersion: v2
+name: chatgpt-web-share
+description: A Helm chart for ChatGPT Web Share
+type: application
+version: 0.1.13
+appVersion: "0.3.15"

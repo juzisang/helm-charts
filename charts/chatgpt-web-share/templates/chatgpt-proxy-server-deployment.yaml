@@ -1,55 +1,44 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "chatgpt-next-web.fullname" . }}
+  name: {{ include "chatgpt-web-share.fullname" . }}-chatgpt-proxy-server
   labels:
-    {{- include "chatgpt-next-web.labels" . | nindent 4 }}
+    {{- include "chatgpt-web-share.labels" . | nindent 4 }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      {{- include "chatgpt-next-web.selectorLabels" . | nindent 6 }}
+      {{- include "chatgpt-web-share.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "chatgpt-next-web.selectorLabels" . | nindent 8 }}
+        {{- include "chatgpt-web-share.selectorLabels" . | nindent 8 }}
     spec:
       containers:
-        - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+        - name: {{ .Chart.Name }}-chatgpt-proxy-server
+          image: "linweiyuan/chatgpt-proxy-server"
+          imagePullPolicy: IfNotPresent
           ports:
-            - name: http
-              containerPort: {{ .Values.service.port }}
+            - containerPort: 9515
               protocol: TCP
-          env:
-            {{- range .Values.env }}
-            {{- with . }}
-            - name: {{ .name }}
-              value: {{ .value | quote }}
-            {{- end }}
-            {{- end }}
           livenessProbe:
-            httpGet:
-              path: /
-              port: http
+            tcpSocket:
+              port: 9515
             timeoutSeconds: 5
             periodSeconds: 10
             successThreshold: 1
             failureThreshold: 3            
           readinessProbe:
-            httpGet:
-              path: /
-              port: http
+            tcpSocket:
+              port: 9515
             timeoutSeconds: 5
             periodSeconds: 10
             successThreshold: 1
             failureThreshold: 3
           startupProbe:
-            httpGet:
-              path: /
-              port: http
-            initialDelaySeconds: 5
+            tcpSocket:
+              port: 9515
+            initialDelaySeconds: 10
             timeoutSeconds: 5
             periodSeconds: 10
             successThreshold: 1
