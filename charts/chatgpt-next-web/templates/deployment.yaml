@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "chatgpt-next-web.fullname" . }}
+  labels:
+    {{- include "chatgpt-next-web.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "chatgpt-next-web.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "chatgpt-next-web.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+          env:
+            - name: TZ
+              value: Asia/Shanghai
+            {{- with .Values.chatgpt.apiKey }}
+            - name: OPENAI_API_KEY
+              value: {{ .Values.chatgpt.apiKey }}
+            {{- end }}
+            {{- with .Values.chatgpt.password }}
+            - name: CODE
+              value: {{ .Values.chatgpt.password }}
+            {{- end }}
+            {{- with .Values.chatgpt.baseUrl }}
+            - name: BASE_URL
+              value: {{ .Values.chatgpt.baseUrl }}
+            {{- end }}
+            {{- with .Values.chatgpt.hideUserApiKey }}
+            - name: HIDE_USER_API_KEY
+              value: {{ .Values.chatgpt.hideUserApiKey }}
+            {{- end }}
+            {{- with .Values.chatgpt.disableGPT4 }}
+            - name: DISABLE_GPT4
+              value: {{ .Values.chatgpt.disableGPT4 }}
+            {{- end }}
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            timeoutSeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3            
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            timeoutSeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3 
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
