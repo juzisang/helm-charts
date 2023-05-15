@@ -4,8 +4,8 @@ fullnameOverride: ""
 halo:
   image:
     repository: halohub/halo
-    tag: "2.5.2"
     pullPolicy: IfNotPresent
+    tag: ""
   config:
     adminUsername: root
     adminPassword: root
