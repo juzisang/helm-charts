@@ -45,22 +45,26 @@ spec:
               value: {{ .Values.mysql.config.database }}
           livenessProbe:
             exec:
-              command:
-              - sh
-              - -c
-              - "mysqladmin ping -u root -p${MYSQL_ROOT_PASSWORD}"
-            initialDelaySeconds: 30
-            periodSeconds: 10
+              command: ["sh", "-c", "mysqladmin ping -u root -p${MYSQL_ROOT_PASSWORD}"]
             timeoutSeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
           readinessProbe:
             exec:
-              command:
-              - sh
-              - -c
-              - "mysqladmin ping -u root -p${MYSQL_ROOT_PASSWORD}"
-            initialDelaySeconds: 5
+              command: ["sh", "-c", "mysqladmin ping -u root -p${MYSQL_ROOT_PASSWORD}"]
+            timeoutSeconds: 5
             periodSeconds: 10
-            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            exec:
+              command: ["sh", "-c", "mysqladmin ping -u root -p${MYSQL_ROOT_PASSWORD}"]
+            initialDelaySeconds: 20
+            timeoutSeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
           volumeMounts:
             - name: mysql-storage
               mountPath: /var/lib/mysql
