@@ -1,11 +1,22 @@
 apiVersion: v1
 entries:
+  chatgpt-next-web:
+  - apiVersion: v2
+    appVersion: v2.4
+    created: "2023-05-15T08:46:38.691680702Z"
+    description: A Helm chart for Chatgpt-Next-Web
+    digest: 44a7c3018004549e2d02fcd6e857bfb8af0d7c7a3088d7712acf2080e152892b
+    name: chatgpt-next-web
+    type: application
+    urls:
+    - https://juzisang.github.io/helm-charts/chatgpt-next-web-0.1.0.tgz
+    version: 0.1.0
   halo:
   - apiVersion: v2
     appVersion: 2.5.2
-    created: "2023-05-15T06:55:38.989462327Z"
+    created: "2023-05-15T08:46:38.692198508Z"
     description: A Helm chart for halo
-    digest: 6af12e8762dca35f8e3ebfe34a67d26bee6aa38d4dd5f7aa86f5ce17a796bbc2
+    digest: c89a6b548cdf2b028e997bd4c356eb0dd993148f44802fdae1dd8aefa65f2425
     name: halo
     type: application
     urls:
@@ -34,9 +45,9 @@ entries:
   memos:
   - apiVersion: v2
     appVersion: 0.12.2
-    created: "2023-05-15T06:55:38.990293002Z"
+    created: "2023-05-15T08:46:38.692700114Z"
     description: A Helm chart for memos
-    digest: 40e6bafa818e8ad31628128f2f543f85952116580ffeb4e63557b6fe445942bc
+    digest: c76093b306778ccff682499dc2ed28ac7e4e2294fd5d8cc171ce7077eab95e9a
     name: memos
     type: application
     urls:
@@ -52,4 +63,4 @@ entries:
     urls:
     - https://juzisang.github.io/helm-charts/memos-0.1.0.tgz
     version: 0.1.0
-generated: "2023-05-15T06:55:38.987418243Z"
+generated: "2023-05-15T08:46:38.690936093Z"
