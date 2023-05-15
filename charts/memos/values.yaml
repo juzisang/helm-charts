@@ -10,6 +10,8 @@ service:
   type: ClusterIP
   port: 5230
 
+volumePath: /data/memos/
+
 ingress:
   enabled: false
   className: "nginx"

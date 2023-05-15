@@ -14,10 +14,18 @@ spec:
       labels:
         {{- include "memos.selectorLabels" . | nindent 8 }}
     spec:
+      volumes:
+        - name: memos-storage
+          hostPath:
+            path: {{ .Values.volumePath }}
+            type: DirectoryOrCreate
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          volumeMounts:
+            - name: memos-storage
+              mountPath: /var/opt/memos
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
