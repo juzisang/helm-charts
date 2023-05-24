@@ -1,5 +1,8 @@
 env: []
 
+volume:
+  hostPath: /data/vaultwarden
+
 image:
   repository: vaultwarden/server
   pullPolicy: IfNotPresent

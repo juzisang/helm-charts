@@ -18,6 +18,11 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      volumes:
+        - name: vaultwarden-storage
+          hostPath:
+            path: {{ .Values.volume.hostPath }}
+            type: DirectoryOrCreate
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
@@ -33,6 +38,9 @@ spec:
               value: {{ .value | quote }}
             {{- end }}
             {{- end }}
+          volumeMounts:
+            - name: vaultwarden-storage
+              mountPath: /data
           livenessProbe:
             httpGet:
               path: /
