@@ -3,9 +3,9 @@ entries:
   chatgpt-next-web:
   - apiVersion: v2
     appVersion: v2.4
-    created: "2023-05-15T17:43:35.259188215Z"
+    created: "2023-05-24T02:22:10.514441758Z"
     description: A Helm chart for Chatgpt-Next-Web
-    digest: a07c965ada2c6992de21ed587416484027ecad342aa9ceeb2626bf17d5920bd2
+    digest: e96864f26baf7ec22ab708c6fce98e201e1f2b42d81a1539d71992e3d986c99c
     name: chatgpt-next-web
     type: application
     urls:
@@ -34,9 +34,9 @@ entries:
   chatgpt-web-share:
   - apiVersion: v2
     appVersion: 0.3.15
-    created: "2023-05-15T17:43:35.259656743Z"
+    created: "2023-05-24T02:22:10.515481372Z"
     description: A Helm chart for ChatGPT Web Share
-    digest: 85edefaa0320fe1ff9649db212b5ffd12549cd9c83f754cc7a453c8da3626f52
+    digest: dca330529fc66cf58034be84579d1a1969106538a524887fe46d40e4e57f3179
     name: chatgpt-web-share
     type: application
     urls:
@@ -45,9 +45,9 @@ entries:
   halo:
   - apiVersion: v2
     appVersion: 2.5.2
-    created: "2023-05-15T17:43:35.260134971Z"
+    created: "2023-05-24T02:22:10.516306783Z"
     description: A Helm chart for halo
-    digest: 55c4332da115e0e5aa621ab085df2009fee5f16d0f2f53cd45696912b93eda49
+    digest: 5d62a36c69ea9850771a84d4f73a209a7d90f05b0d6943d13c97abe01bb344f7
     name: halo
     type: application
     urls:
@@ -76,9 +76,9 @@ entries:
   memos:
   - apiVersion: v2
     appVersion: 0.12.2
-    created: "2023-05-15T17:43:35.260558497Z"
+    created: "2023-05-24T02:22:10.516668388Z"
     description: A Helm chart for memos
-    digest: 0988c7445c230b0844da04ad9a70bb45474f7ed3bd6074b500792cafdf7cf5f7
+    digest: ae51970a2c17f7ee72e78f4174a282c96d2116737cc6ac997bdbf9b0dfc1e6de
     name: memos
     type: application
     urls:
@@ -94,4 +94,15 @@ entries:
     urls:
     - https://juzisang.github.io/helm-charts/memos-0.1.0.tgz
     version: 0.1.0
-generated: "2023-05-15T17:43:35.258520076Z"
+  vaultwarden:
+  - apiVersion: v2
+    appVersion: 1.28.1
+    created: "2023-05-24T02:22:10.517016092Z"
+    description: A Helm chart for Vaultwarden
+    digest: 0b96f64d21592a1d3f649e33d0757fc97d910cd2cfa5ae3580d165368d872786
+    name: vaultwarden
+    type: application
+    urls:
+    - https://juzisang.github.io/helm-charts/vaultwarden-0.1.0.tgz
+    version: 0.1.0
+generated: "2023-05-24T02:22:10.513896951Z"
