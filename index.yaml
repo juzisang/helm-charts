@@ -2,6 +2,16 @@ apiVersion: v1
 entries:
   chatgpt-next-web:
   - apiVersion: v2
+    appVersion: v2.7
+    created: "2023-06-07T05:52:09.717629235Z"
+    description: A Helm chart for Chatgpt-Next-Web
+    digest: f2d7d0078b3d981d068bdf34e693d4c97712f93226901c18bc368f4977f63a33
+    name: chatgpt-next-web
+    type: application
+    urls:
+    - https://juzisang.github.io/helm-charts/chatgpt-next-web-0.1.5.tgz
+    version: 0.1.5
+  - apiVersion: v2
     appVersion: v2.6
     created: "2023-05-24T05:55:11.323930475Z"
     description: A Helm chart for Chatgpt-Next-Web
@@ -44,9 +54,9 @@ entries:
   chatgpt-web-share:
   - apiVersion: v2
     appVersion: 0.3.15
-    created: "2023-05-24T05:55:11.324346273Z"
+    created: "2023-06-07T05:52:09.718296641Z"
     description: A Helm chart for ChatGPT Web Share
-    digest: fbd0192add114b4410e6b2986d0c0f2e38b8f92f2409d68492e21a26d5c0dbd6
+    digest: bf865d42c3bde6efda50fae13bbb9c93cfaa41dd93b1d86b5dd4f20577b593a7
     name: chatgpt-web-share
     type: application
     urls:
@@ -55,9 +65,9 @@ entries:
   halo:
   - apiVersion: v2
     appVersion: 2.5.2
-    created: "2023-05-24T05:55:11.32477587Z"
+    created: "2023-06-07T05:52:09.718793746Z"
     description: A Helm chart for halo
-    digest: 0fdc195f4a5be40c0ffcc016ebe25fbaca223ab9fde88456ceae3031119f7f6a
+    digest: d2297284c2ebeea34ddee085e3823d47ff62c799bc9d8fa7ff35e65202f0d681
     name: halo
     type: application
     urls:
@@ -86,9 +96,9 @@ entries:
   memos:
   - apiVersion: v2
     appVersion: 0.12.2
-    created: "2023-05-24T05:55:11.325148368Z"
+    created: "2023-06-07T05:52:09.71921915Z"
     description: A Helm chart for memos
-    digest: 65610b581ab68555691eed44829e62625ce092300fa44bc8814496fd97ec7e34
+    digest: 6caf15acc3c4c11967f01c7a89a3159029d3515b1bd3dd1f30bc2cc99e92be1e
     name: memos
     type: application
     urls:
@@ -107,9 +117,9 @@ entries:
   vaultwarden:
   - apiVersion: v2
     appVersion: 1.28.1
-    created: "2023-05-24T05:55:11.325476266Z"
+    created: "2023-06-07T05:52:09.719688354Z"
     description: A Helm chart for Vaultwarden
-    digest: 9257bbe918f0c37c2f264e9c7bb1574183d28104a310e83907e2fff99a23cb64
+    digest: 399dd409aae38edacbaee41968c69935785500efcadd3b96d2675ccf108f47b7
     name: vaultwarden
     type: application
     urls:
@@ -125,4 +135,4 @@ entries:
     urls:
     - https://juzisang.github.io/helm-charts/vaultwarden-0.1.0.tgz
     version: 0.1.0
-generated: "2023-05-24T05:55:11.323183079Z"
+generated: "2023-06-07T05:52:09.716275122Z"
